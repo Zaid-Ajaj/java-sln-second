@@ -19,7 +19,7 @@ public class Gallows
         return guessesLeft > 0 && finished();
     }
 
-    public static boolean wordFoundTest(String wordToGuess, ArrayList<String> guessedLetters)
+    public boolean wordFound(String wordToGuess, ArrayList<String> guessedLetters)
     {
         int wordLength = wordToGuess.length();
         char[] wordToBeGuessedLetters = wordToGuess.toCharArray();
@@ -27,7 +27,7 @@ public class Gallows
         for(int i = 0; i < wordLength; i++)
         {
             boolean letterFound = false;
-
+ 
             for(int j = 0; j < guessedLetters.size() ; j++)
             {
                 char currentLetter = wordToBeGuessedLetters[i];
@@ -50,7 +50,7 @@ public class Gallows
 
     public boolean finished()
     {
-        return guessesLeft == 0 || wordFoundTest(wordToGuess, guessedLetters);
+        return guessesLeft == 0 || wordFound(wordToGuess, guessedLetters);
     }
 
     public int getGuessesLeft()
@@ -58,7 +58,7 @@ public class Gallows
         return guessesLeft;
     }
 
-    
+
 
     public void guess(String letter)
     {

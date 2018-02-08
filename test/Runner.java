@@ -7,6 +7,7 @@ public class Runner
     {
         Test.Case("word found works as expected", () -> 
         {   
+            Gallows game = new Gallows("irrelevant word");
             String input = "terminal";
             ArrayList<String> guessedLetters = new ArrayList<String>();
             guessedLetters.add("t");
@@ -14,7 +15,7 @@ public class Runner
             guessedLetters.add("r");
             guessedLetters.add("m");
             
-            boolean wordFound = Gallows.wordFoundTest(input, guessedLetters);
+            boolean wordFound = game.wordFound(input, guessedLetters);
             Test.AreEqual(false, wordFound, "The word shouldn't be found yet");
             
             guessedLetters.add("i");
@@ -22,15 +23,16 @@ public class Runner
             guessedLetters.add("a");
             guessedLetters.add("l");
 
-            wordFound = Gallows.wordFoundTest(input, guessedLetters);
+            wordFound = game.wordFound(input, guessedLetters);
             Test.AreEqual(true, wordFound, "The word should be now found");
         });
 
         Test.Case("Gallows.wordFound still works when guessed letters are empty", () ->
         {
+            Gallows game = new Gallows("irrelevant word");
             String input = "terminal";
             ArrayList<String> guessedLetters = new ArrayList<String>();
-            boolean found = Gallows.wordFoundTest(input, guessedLetters);
+            boolean found = game.wordFound(input, guessedLetters);
 
             Test.AreEqual(false, found, "Word shoudn't be found");
         });
