@@ -4,3 +4,5 @@ rm -rf -r out
 # option "--source-path" is where the source .java files are located, in this case in src
 # option "-d out" is the output directory
 javac src/*.java -d out
+cp src/words.txt out/words.txt
+echo "Build successful"

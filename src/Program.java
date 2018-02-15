@@ -8,27 +8,31 @@ public class Program
 
         System.out.println("Hello to our great Hangman game!");
 
-        Gallows game = new Gallows("terminal");
+        Gallows game = new Gallows();
 
         while(!game.finished())
         {
-            //int guessesLeft = game.getGuessesLeft();
-            //String wordGuessedSoFar = game.wordGuessedSoFar();
+            int guessesLeft = game.getGuessesLeft();
+            String guessedSoFar = game.partialWordGuessedSoFar();
+            
+            System.out.println("You have " + guessesLeft + " guesses left");
+            System.out.println("Word guessed so far: " + guessedSoFar);
 
             if (scanner.hasNextLine())
             {
-                String input = scanner.nextLine();
-                game.guess(input);
+                String nextGuess = scanner.nextLine();
+                game.guess(nextGuess);
             }
         }
 
         if (game.playerWon())
         {
-            System.out.println("You have won! congrats");
+            String foundWord = game.partialWordGuessedSoFar();
+            System.out.println("You have won! congrats. You found the word: " + foundWord);
         }
         else
         {
-            System.out.println("Computer has won, you have not been able to guess the word correctly");
+            System.out.println("Computer has won, you have not been able to guess the word.");
         }
 
         scanner.close();
